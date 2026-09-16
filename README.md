@@ -16,8 +16,19 @@
 - Peer-to-Peer Transfer (Concurrency & Race Condition Handling)
 - Transaction History Pagination
 
----
-## 4. Key Technical Vocabulary
+## 4. Tech Stack
+- **Language & Framework:** Java 17+, Spring Boot 3.x
+- **Database & ORM:** MySQL, Spring Data JPA / QueryDSL
+- **Cache & Concurrency:** Redis
+- **Infrastructure:** Docker
+
+## 5. Core Technical Challenge
+- **Topic:** Concurrency Control & Race Condition Handling in Remittance/Deposit
+- **Goal:**
+  - Preventing race conditions during simultaneous transfer and deposit requests.
+  - Ensuring **Data Integrity** through Pessimistic/Optimistic Locking or Redis Distributed Locks.
+
+## 6. Key Technical Vocabulary
 - **Robust:** The ability of a system to withstand errors or high traffic loads without crashing.
 - **Concurrency Control:** Managing simultaneous data access to prevent race conditions.
 - **Data Integrity / Consistency:** Ensuring data remains accurate and reliable across transactions.
