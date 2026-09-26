@@ -1,4 +1,4 @@
-package com.fintech.fintech_transfer_service.domain.user;
+package com.fintech.fintech_transfer_service.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
