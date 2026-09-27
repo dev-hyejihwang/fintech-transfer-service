@@ -22,13 +22,17 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, length = 30)
-    private String name;
+    @Column(name = "first_name", nullable = false, length = 100)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false, length = 100)
+    private String lastName;
 
     @Builder
-    public User(String email, String password, String name) {
+    public User(String email, String password, String firstName, String lastName) {
         this.email = email;
         this.password = password;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 }
