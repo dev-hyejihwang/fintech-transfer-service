@@ -4,9 +4,13 @@ import com.fintech.fintech_transfer_service.user.User;
 import com.fintech.fintech_transfer_service.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 
-@SpringBootTest
+import java.util.Optional;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
+@DataJpaTest
 public class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
@@ -22,16 +26,11 @@ public class UserRepositoryTest {
                 .build();
 
         User savedUser = userRepository.save(user);
+        Optional<User> foundUser = userRepository.findById(savedUser.getId());
 
-        System.out.println(savedUser.getId());
+        assertThat(foundUser).isPresent();
+        assertThat(foundUser.get().getEmail()).isEqualTo("test@test.com");
     }
 
-    @Test
-    void findById() {
-        User user = userRepository.findById(1L)
-                .orElseThrow();
-
-        System.out.println(user.getEmail());
-    }
 
 }
