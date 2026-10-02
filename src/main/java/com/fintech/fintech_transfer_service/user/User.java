@@ -35,7 +35,7 @@ public class User {
     private String lastName;
 
     @Column(name = "created_at", insertable = false, updatable = false)
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Account> accounts = new ArrayList<>();

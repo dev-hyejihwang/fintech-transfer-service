@@ -1,7 +1,5 @@
-package com.fintech.fintech_transfer_service;
+package com.fintech.fintech_transfer_service.account;
 
-import com.fintech.fintech_transfer_service.account.Account;
-import com.fintech.fintech_transfer_service.account.AccountRepository;
 import com.fintech.fintech_transfer_service.user.User;
 import com.fintech.fintech_transfer_service.user.UserRepository;
 import jakarta.transaction.Transactional;
