@@ -1,6 +1,6 @@
 package com.fintech.fintech_transfer_service.account;
 
-import com.fintech.fintech_transfer_service.user.User;
+import com.fintech.fintech_transfer_service.user.domain.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;

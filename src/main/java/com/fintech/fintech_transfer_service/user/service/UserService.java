@@ -1,5 +1,7 @@
-package com.fintech.fintech_transfer_service.user;
+package com.fintech.fintech_transfer_service.user.service;
 
+import com.fintech.fintech_transfer_service.user.domain.User;
+import com.fintech.fintech_transfer_service.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +13,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User register(String email,String password,String firstName,String lastName) {
+    public User register(String email, String password, String firstName, String lastName) {
 
         if (userRepository.existsByEmail(email)) {
             throw new IllegalArgumentException("Email already exists.");

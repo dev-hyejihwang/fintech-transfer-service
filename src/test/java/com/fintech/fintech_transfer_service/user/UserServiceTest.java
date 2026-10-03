@@ -1,5 +1,8 @@
 package com.fintech.fintech_transfer_service.user;
 
+import com.fintech.fintech_transfer_service.user.domain.User;
+import com.fintech.fintech_transfer_service.user.repository.UserRepository;
+import com.fintech.fintech_transfer_service.user.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

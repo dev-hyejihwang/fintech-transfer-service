@@ -1,5 +1,7 @@
 package com.fintech.fintech_transfer_service.user;
 
+import com.fintech.fintech_transfer_service.user.domain.User;
+import com.fintech.fintech_transfer_service.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;

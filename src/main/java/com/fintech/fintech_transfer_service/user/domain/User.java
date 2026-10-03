@@ -1,4 +1,4 @@
-package com.fintech.fintech_transfer_service.user;
+package com.fintech.fintech_transfer_service.user.domain;
 
 import com.fintech.fintech_transfer_service.account.Account;
 import jakarta.persistence.*;

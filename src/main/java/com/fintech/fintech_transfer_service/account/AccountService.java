@@ -1,7 +1,7 @@
 package com.fintech.fintech_transfer_service.account;
 
-import com.fintech.fintech_transfer_service.user.User;
-import com.fintech.fintech_transfer_service.user.UserRepository;
+import com.fintech.fintech_transfer_service.user.domain.User;
+import com.fintech.fintech_transfer_service.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
