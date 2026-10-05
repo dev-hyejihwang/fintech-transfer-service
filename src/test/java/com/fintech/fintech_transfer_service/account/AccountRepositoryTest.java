@@ -2,7 +2,9 @@ package com.fintech.fintech_transfer_service.account;
 
 import com.fintech.fintech_transfer_service.user.domain.User;
 import com.fintech.fintech_transfer_service.user.repository.UserRepository;
+import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
+import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
@@ -17,6 +19,9 @@ public class AccountRepositoryTest {
 
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private EntityManager entityManager;
 
     @Test
     @Transactional
@@ -38,9 +43,12 @@ public class AccountRepositoryTest {
 
         accountRepository.save(account);
 
+        entityManager.clear();
         Account foundAccount = accountRepository.findByAccountNumber("110-123-456789").orElseThrow();
         assertThat(foundAccount.getBalance()).isEqualTo(10000L);
         assertThat(foundAccount.getUser().getEmail()).isEqualTo("heidi@test.com");
+        assertThat(foundAccount.getCreatedAt()).isNotNull();
+
 
     }
 }

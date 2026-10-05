@@ -26,7 +26,7 @@ public class Account {
     @Column(nullable = false)
     private Long balance;
 
-    @Column(name = "created_at", insertable = false, updatable = false) // 3. created_at 매핑 추가
+    @Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP" )
     private LocalDateTime createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
