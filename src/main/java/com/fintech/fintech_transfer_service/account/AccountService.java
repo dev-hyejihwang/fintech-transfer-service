@@ -4,6 +4,7 @@ import com.fintech.fintech_transfer_service.user.domain.User;
 import com.fintech.fintech_transfer_service.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -37,5 +38,21 @@ public class AccountService {
                 );
 
         return account.getBalance();
+    }
+
+    @Transactional
+    public void deposit(String accountNumber, Long amount) {
+        Account account = accountRepository.findByAccountNumberWithLock(accountNumber)
+                .orElseThrow(() -> new IllegalArgumentException("Account not found."));
+
+        account.deposit(amount);
+    }
+
+    @Transactional
+    public void withdraw(String accountNumber, Long amount) {
+        Account account = accountRepository.findByAccountNumberWithLock(accountNumber)
+                .orElseThrow(() -> new IllegalArgumentException("Account not found."));
+
+        account.withdraw(amount);
     }
 }
