@@ -34,7 +34,15 @@
   * 동시에 여러 송금/충전 요청이 발생할 때 발생할 수 있는 Race Condition 방어
   * Pessimistic/Optimistic Lock 및 Redis 분산 락 적용을 통한 데이터 무결성(Data Integrity) 확보
 
-### 6. 핵심 기술 용어 정리
+### 6. 데이터베이스 인덱스 분석 (Database Index Analysis)
+
+* **대상 컬럼:** `accounts.account_number`
+* **기존 인덱스 확인:** `SHOW INDEX FROM accounts`를 사용해 계좌 번호의 UNIQUE 인덱스 확인
+* **실행 계획 분석:** `EXPLAIN`을 사용해 계좌 번호 조회 쿼리에서 기존 인덱스가 선택되는 것을 확인
+* **설계 결정:** 이미 존재하는 인덱스와 중복되는 인덱스를 추가하지 않음
+* **추가 과제:** 실제 성능 개선 여부는 충분한 데이터와 실행 시간 측정을 통해 검증할 예정
+
+### 7. 핵심 기술 용어 정리
 * **Robust:** 에러나 대용량 트래픽 속에서도 시스템이 죽지 않고 견고하게 버티는 상태
 * **Concurrency Control:** 여러 사용자가 동시에 데이터를 수정할 때 꼬이지 않도록 조율하는 기술
 * **Data Integrity / Consistency:** 데이터가 모순 없이 항상 올바르고 정확한 상태를 유지하는 것
@@ -74,7 +82,15 @@
   * Preventing race conditions during simultaneous transfer and deposit requests.
   * Ensuring Data Integrity through Pessimistic/Optimistic Locking or Redis Distributed Locks.
 
-### 6. Key Technical Vocabulary
+### 6. Database Index Analysis
+
+* **Target Column:** `accounts.account_number`
+* **Existing Index:** Verified the existing UNIQUE index using `SHOW INDEX FROM accounts`.
+* **Query Plan Analysis:** Used `EXPLAIN` to confirm that MySQL selects the existing index for account-number lookups.
+* **Design Decision:** Avoided adding a redundant index.
+* **Next Step:** Benchmark query performance with a larger dataset to evaluate the actual performance impact.
+
+### 7. Key Technical Vocabulary
 * **Robust:** The ability of a system to withstand errors or high traffic loads without crashing.
 * **Concurrency Control:** Managing simultaneous data access to prevent race conditions.
 * **Data Integrity / Consistency:** Ensuring data remains accurate and reliable across transactions.
