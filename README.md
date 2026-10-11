@@ -49,7 +49,20 @@
 * **Scalability:** 사용자가 늘어나거나 규모가 커졌을 때 시스템을 쉽게 확장할 수 있는 성질
 * **Pagination:** 수많은 데이터를 한 번에 불러오지 않고 일정 크기로 끊어서 보여주는 기술
 
+### 8. 구현 및 검증 결과 (Implementation & Validation)
+* **동시성 제어**
+- 동시 요청을 통한 Race Condition 재현 테스트
+- 비관적 락(Pessimistic Lock) 적용 및 계좌 잔액 정합성 검증
 
+* **테스트 및 성능 분석**
+- 자동화 테스트를 통한 기존 기능 및 동시성 제어 검증
+- `EXPLAIN`을 활용한 계좌 번호 조회 실행 계획 분석
+- 기존 UNIQUE 인덱스와 중복되는 인덱스를 추가하지 않도록 설계
+
+* ** 향후 개선점**
+- 다양한 동시 요청 조건에서 추가 검증
+- 대규모 테스트 데이터를 활용한 실제 쿼리 성능 측정
+- 락 경합 및 트랜잭션 성능 분석
 ---
 
 ## english-introduction
@@ -96,3 +109,18 @@
 * **Data Integrity / Consistency:** Ensuring data remains accurate and reliable across transactions.
 * **Scalability:** The capability of a system to handle a growing amount of work.
 * **Pagination:** Breaking down large datasets into manageable chunks.
+
+### 8. Implementation & Validation
+* **Concurrency Control**
+  - Reproduced race conditions through concurrent request tests.
+  - Applied pessimistic locking and verified account balance consistency.
+
+* **Testing & Performance Analysis**
+  - Validated existing functionality and concurrency control through automated tests.
+  - Analyzed account number lookup query plans using `EXPLAIN`.
+  - Avoided adding redundant indexes that duplicate the existing UNIQUE index.
+
+* **Future Improvements**
+  - Expand validation under different concurrency conditions.
+  - Benchmark query performance using larger test datasets.
+  - Analyze lock contention and transaction performance.
