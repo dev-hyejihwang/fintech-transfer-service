@@ -28,37 +28,43 @@
 * **Cache & Concurrency:** Redis
 * **Infrastructure:** Docker
 
-### 5. 핵심 기술 챌린지 (Technical Challenge)
+### 5. 인프라 및 데이터베이스 구성 (Infrastructure & Database)
+- **Database:** AWS RDS for MySQL
+- **DB Instance:** `fintech-mysql-instance`
+- **DB Name:** `fintech_db`
+- **Network:** AWS VPC 및 DB Subnet Group 구성
+- **Security:** Security Group을 통한 MySQL TCP 3306 접근 제어
+- **Deployment:** RDS 인스턴스 생성 완료
+- **Next Step:** Spring Boot 애플리케이션과 RDS 연결 및 데이터베이스 접근 검증
+
+### 6. 핵심 기술 챌린지 (Technical Challenge)
 * **주제:** 대규모 송금 및 잔액 충전 상황에서의 동시성 제어 (Concurrency Control)
 * **목표:**
   * 동시에 여러 송금/충전 요청이 발생할 때 발생할 수 있는 Race Condition 방어
   * Pessimistic/Optimistic Lock 및 Redis 분산 락 적용을 통한 데이터 무결성(Data Integrity) 확보
 
-### 6. 데이터베이스 인덱스 분석 (Database Index Analysis)
-
+### 7. 데이터베이스 인덱스 분석 (Database Index Analysis)
 * **대상 컬럼:** `accounts.account_number`
 * **기존 인덱스 확인:** `SHOW INDEX FROM accounts`를 사용해 계좌 번호의 UNIQUE 인덱스 확인
 * **실행 계획 분석:** `EXPLAIN`을 사용해 계좌 번호 조회 쿼리에서 기존 인덱스가 선택되는 것을 확인
 * **설계 결정:** 이미 존재하는 인덱스와 중복되는 인덱스를 추가하지 않음
 * **추가 과제:** 실제 성능 개선 여부는 충분한 데이터와 실행 시간 측정을 통해 검증할 예정
 
-### 7. 핵심 기술 용어 정리
+### 8. 핵심 기술 용어 정리
 * **Robust:** 에러나 대용량 트래픽 속에서도 시스템이 죽지 않고 견고하게 버티는 상태
 * **Concurrency Control:** 여러 사용자가 동시에 데이터를 수정할 때 꼬이지 않도록 조율하는 기술
 * **Data Integrity / Consistency:** 데이터가 모순 없이 항상 올바르고 정확한 상태를 유지하는 것
 * **Scalability:** 사용자가 늘어나거나 규모가 커졌을 때 시스템을 쉽게 확장할 수 있는 성질
 * **Pagination:** 수많은 데이터를 한 번에 불러오지 않고 일정 크기로 끊어서 보여주는 기술
 
-### 8. 구현 및 검증 결과 (Implementation & Validation)
+### 9. 구현 및 검증 결과 (Implementation & Validation)
 * **동시성 제어**
 - 동시 요청을 통한 Race Condition 재현 테스트
 - 비관적 락(Pessimistic Lock) 적용 및 계좌 잔액 정합성 검증
-
 * **테스트 및 성능 분석**
 - 자동화 테스트를 통한 기존 기능 및 동시성 제어 검증
 - `EXPLAIN`을 활용한 계좌 번호 조회 실행 계획 분석
 - 기존 UNIQUE 인덱스와 중복되는 인덱스를 추가하지 않도록 설계
-
 * ** 향후 개선점**
 - 다양한 동시 요청 조건에서 추가 검증
 - 대규모 테스트 데이터를 활용한 실제 쿼리 성능 측정
@@ -89,37 +95,43 @@
 * **Cache & Concurrency:** Redis
 * **Infrastructure:** Docker
 
-### 5. Core Technical Challenge
+### 5. Infrastructure & Database Configuration
+- **Database:** AWS RDS for MySQL
+- **DB Instance:** `fintech-mysql-instance`
+- **Database Name:** `fintech_db`
+- **Network:** Configured AWS VPC and DB Subnet Group
+- **Security:** Restricted MySQL TCP 3306 access using a Security Group
+- **Deployment:** RDS instance successfully provisioned (`Available`)
+- **Next Step:** Connect the Spring Boot application to RDS and validate database access
+
+### 6. Core Technical Challenge
 * **Topic:** Concurrency Control & Race Condition Handling in Remittance/Deposit
 * **Goal:**
   * Preventing race conditions during simultaneous transfer and deposit requests.
   * Ensuring Data Integrity through Pessimistic/Optimistic Locking or Redis Distributed Locks.
 
-### 6. Database Index Analysis
-
+### 7. Database Index Analysis
 * **Target Column:** `accounts.account_number`
 * **Existing Index:** Verified the existing UNIQUE index using `SHOW INDEX FROM accounts`.
 * **Query Plan Analysis:** Used `EXPLAIN` to confirm that MySQL selects the existing index for account-number lookups.
 * **Design Decision:** Avoided adding a redundant index.
 * **Next Step:** Benchmark query performance with a larger dataset to evaluate the actual performance impact.
 
-### 7. Key Technical Vocabulary
+### 8. Key Technical Vocabulary
 * **Robust:** The ability of a system to withstand errors or high traffic loads without crashing.
 * **Concurrency Control:** Managing simultaneous data access to prevent race conditions.
 * **Data Integrity / Consistency:** Ensuring data remains accurate and reliable across transactions.
 * **Scalability:** The capability of a system to handle a growing amount of work.
 * **Pagination:** Breaking down large datasets into manageable chunks.
 
-### 8. Implementation & Validation
+### 9. Implementation & Validation
 * **Concurrency Control**
   - Reproduced race conditions through concurrent request tests.
   - Applied pessimistic locking and verified account balance consistency.
-
 * **Testing & Performance Analysis**
   - Validated existing functionality and concurrency control through automated tests.
   - Analyzed account number lookup query plans using `EXPLAIN`.
   - Avoided adding redundant indexes that duplicate the existing UNIQUE index.
-
 * **Future Improvements**
   - Expand validation under different concurrency conditions.
   - Benchmark query performance using larger test datasets.
