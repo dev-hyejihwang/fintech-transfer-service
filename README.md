@@ -37,6 +37,16 @@
 - **Deployment:** RDS 인스턴스 생성 완료
 - **Next Step:** Spring Boot 애플리케이션과 RDS 연결 및 데이터베이스 접근 검증
 
+### 5. 인프라 및 데이터베이스 구성 (Infrastructure & Database)
+**Environment:** Docker Compose 기반 로컬 개발 환경
+**Database:** MySQL 8 (Docker Container)
+**DB Name:** `fintech_db`
+**Cache:** Redis 7 (Docker Container)
+**Network:** Docker 네트워크를 통한 컨테이너 간 통신
+**Data Persistence:** Docker Volume을 통한 데이터 영속성 관리 (설정 시)
+**Execution:** Spring Boot 애플리케이션 로컬 실행 및 Docker 기반 MySQL·Redis 연동
+**Deployment Strategy:** AWS 인프라 없이 로컬 환경에서 핵심 기능 개발 및 테스트 수행
+
 ### 6. 핵심 기술 챌린지 (Technical Challenge)
 * **주제:** 대규모 송금 및 잔액 충전 상황에서의 동시성 제어 (Concurrency Control)
 * **목표:**
@@ -96,13 +106,14 @@
 * **Infrastructure:** Docker
 
 ### 5. Infrastructure & Database Configuration
-- **Database:** AWS RDS for MySQL
-- **DB Instance:** `fintech-mysql-instance`
-- **Database Name:** `fintech_db`
-- **Network:** Configured AWS VPC and DB Subnet Group
-- **Security:** Restricted MySQL TCP 3306 access using a Security Group
-- **Deployment:** RDS instance successfully provisioned (`Available`)
-- **Next Step:** Connect the Spring Boot application to RDS and validate database access
+**Environment:** Docker Compose-based local development environment
+**Database:** MySQL 8 (Docker Container)
+**DB Name:** `fintech_db`
+**Cache:** Redis 7 (Docker Container)
+**Network:** Communication between containers through a Docker network
+**Data Persistence:** Persistent data management using Docker Volumes (if configured)
+**Execution:** Local execution of the Spring Boot application integrated with Docker-based MySQL and Redis
+**Deployment Strategy:** Core features are developed and tested locally without requiring AWS infrastructure
 
 ### 6. Core Technical Challenge
 * **Topic:** Concurrency Control & Race Condition Handling in Remittance/Deposit
